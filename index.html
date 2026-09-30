@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Circulatorio - Biología 4°C Sociales</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- GSAP Library para animaciones profesionales -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+
+    <!-- Fondo Dinámico con Orbes Liquid Glass -->
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Barra de Navegación Líquida (Pill Bar / Gooey Tab Bar) -->
+    <nav class="liquid-nav-container">
+        <div class="liquid-nav" id="liquidNav">
+            <div class="nav-indicator" id="navIndicator"></div>
+            <button class="nav-btn active" data-target="inicio">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Inicio</span>
+            </button>
+            <button class="nav-btn" data-target="teoria">
+                <span class="nav-icon">🧬</span>
+                <span class="nav-text">Teoría</span>
+            </button>
+            <button class="nav-btn" data-target="integrantes">
+                <span class="nav-icon">👥</span>
+                <span class="nav-text">Integrantes</span>
+            </button>
+            <button class="nav-btn" data-target="fqs">
+                <span class="nav-icon">❓</span>
+                <span class="nav-text">FQs & Datos</span>
+            </button>
+            <button class="nav-btn" data-target="enfermedades">
+                <span class="nav-icon">🦠</span>
+                <span class="nav-text">Enfermedades</span>
+            </button>
+            <button class="nav-btn custom-trigger-btn" data-target="personalizar">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Personalizar</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal SPA -->
+    <main class="main-container">
+
+        <!-- SECCIÓN 1: INICIO (HERO) -->
+        <section id="inicio" class="spa-section active">
+            <div class="hero-content">
+                <div class="hero-text-wrapper">
+                    <h1 class="glow-title">
+                        <span class="char">S</span><span class="char">i</span><span class="char">s</span><span class="char">t</span><span class="char">e</span><span class="char">m</span><span class="char">a</span> 
+                        <span class="char">C</span><span class="char">i</span><span class="char">r</span><span class="char">c</span><span class="char">u</span><span class="char">l</span><span class="char">a</span><span class="char">t</span><span class="char">o</span><span class="char">r</span><span class="char">i</span><span class="char">o</span>
+                    </h1>
+                    <p class="hero-subtitle">El Motor de la Vida - Biología 4°C Sociales | Colegio Normal</p>
+                    <div class="hero-badge">
+                        <span>✨ Creado para Exposición Oral Profesional</span>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="heart-glow-container">
+                        <img src="img/corazon.png" alt="Corazón Humano 3D" class="pulsing-heart">
+                        <div class="heart-pulse-ring"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: MARCO TEÓRICO DE BIOLOGÍA -->
+        <section id="teoria" class="spa-section">
+            <div class="section-header">
+                <h2>Marco Teórico de Biología</h2>
+                <p>Contenido completo extraído de los apuntes y PDF oficiales.</p>
+            </div>
+
+            <!-- PARTE DE GENARO -->
+            <div class="author-section-block">
+                <div class="author-badge-pill">📌 Parte de Genaro Gularte</div>
+
+                <!-- 1. Estructura del Corazón -->
+                <div class="content-row">
+                    <div class="text-side">
+                        <h3>Anatomía y Estructuras del Corazón</h3>
+                        <p>El corazón es un órgano muscular hueco ubicado en el mediastino, en la parte central del tórax, de un tamaño algo mayor que un puño cerrado y un peso aproximado de 280 g. Sus paredes están formadas por tres capas:</p>
+                        <ul>
+                            <li><strong>Pericardio:</strong> Capa externa de tejido conjuntivo protector.</li>
+                            <li><strong>Miocardio:</strong> Músculo cardíaco encargado de la fuerza de contracción automática.</li>
+                            <li><strong>Endocardio:</strong> Revestimiento interno de las cavidades cardíacas.</li>
+                        </ul>
+                        <p>Se divide en 4 cavidades: 2 aurículas superiores (receptoras) y 2 ventrículos inferiores (impulsores). Posee válvulas clave como la <strong>tricúspide</strong> (derecha) y la <strong>mitral/bicúspide</strong> (izquierda), además de las válvulas semilunares o sigmoideas que evitan el reflujo hacia la aorta y la arteria pulmonar.</p>
+                    </div>
+                    <div class="image-side">
+                        <div class="glass-card-img">
+                            <img src="img/corazon.png" alt="Estructura Interna del Corazón">
+                            <div class="image-glow-effect"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Circuito Mayor y Menor -->
+                <div class="content-row reverse">
+                    <div class="text-side">
+                        <h3>Circuito Mayor (Sistémico) y Menor (Pulmonar)</h3>
+                        <p>La circulación humana se define como <strong>cerrada, doble y completa</strong>:</p>
+                        <ul>
+                            <li><strong>Circulación Menor (Pulmonar):</strong> El ventrículo derecho impulsa sangre carboxigenada hacia la arteria pulmonar rumbo a los pulmones. Allí ocurre la <em>hematosis</em> (intercambio gaseoso en los alvéolos) y la sangre oxigenada regresa a la aurícula izquierda mediante las venas pulmonares.</li>
+                            <li><strong>Circulación Mayor (Sistémico):</strong> El ventrículo izquierdo bombea sangre oxigenada a través de la arteria aorta hacia todo el cuerpo. Tras ceder oxígeno y nutrientes a los tejidos y recoger $CO_2$, la sangre retorna por las venas cavas superior e inferior hasta la aurícula derecha.</li>
+                        </ul>
+                    </div>
+                    <div class="image-side">
+                        <div class="glass-card-img">
+                            <img class="circulacion-img" src="img/esquema-doble-circulacion.png" alt="Circuito Mayor y Menor">
+                            <div class="image-glow-effect"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Vasos Sanguíneos -->
+                <div class="content-row">
+                    <div class="text-side">
+                        <h3>Vasos Sanguíneos (Características y Funciones)</h3>
+                        <ul>
+                            <li><strong>Arterias:</strong> Conducen sangre desde los ventrículos a alta presión. Paredes gruesas, elásticas y musculares (como la aorta, de 2,5 cm de diámetro).</li>
+                            <li><strong>Venas:</strong> Retornan la sangre al corazón a menor presión y en contra de la gravedad. Poseen paredes más delgadas y <em>válvulas semilunares</em> unidireccionales ayudadas por la contracción muscular esquelética.</li>
+                            <li><strong>Capilares:</strong> Vasos microscópicos de una sola célula de espesor (~6 micrones) donde se produce el intercambio real de nutrientes, gases y desechos con los tejidos.</li>
+                        </ul>
+                    </div>
+                    <div class="image-side">
+                        <div class="glass-card-img">
+                            <img src="img/vasos-sanguineos.png" alt="Vasos Sanguíneos">
+                            <div class="image-glow-effect"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PARTE DE AUGUSTO -->
+            <div class="author-section-block">
+                <div class="author-badge-pill augusto-badge">📌 Parte de Augusto Macagno</div>
+
+                <!-- 4. Componentes de la Sangre -->
+                <div class="content-row">
+                    <div class="text-side">
+                        <h3>La Sangre: Componentes y Funciones</h3>
+                        <p>Tejido líquido compuesto en un ~55% por <strong>plasma</strong> (agua, proteínas, iones) y elementos formes:</p>
+                        <ul>
+                            <li><strong>Glóbulos Rojos (Eritrocitos):</strong> Discos bicóncavos sin núcleo cargados de hemoglobina para transportar oxígeno y $CO_2$ (4.500.000 - 5.000.000 por $mm^3$).</li>
+                            <li><strong>Glóbulos Blancos (Leucocitos):</strong> Células con núcleo encargadas de la defensa inmunitaria mediante fagocitosis y producción de anticuerpos (neutrófilos, eosinófilos, basófilos, linfocitos y monocitos).</li>
+                            <li><strong>Plaquetas (Trombocitos):</strong> Fragmentos celulares que forman el tapón plaquetario e intervienen en la coagulación.</li>
+                        </ul>
+                    </div>
+                    <div class="image-side blood-cells-grid">
+                        <div class="glass-card-img large-img">
+                            <img src="img/globulo-rojo.png" alt="Glóbulo Rojo">
+                            <span class="img-caption">Glóbulos Rojos</span>
+                        </div>
+                        <div class="glass-card-img large-img">
+                            <img src="img/globulo-blanco.png" alt="Glóbulo Blanco">
+                            <span class="img-caption">Glóbulos Blancos</span>
+                        </div>
+                        <div class="glass-card-img large-img">
+                            <img src="img/planquetas.png" alt="Plaquetas">
+                            <span class="img-caption">Plaquetas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Sistema Eléctrico Cardíaco -->
+                <div class="content-row reverse">
+                    <div class="text-side">
+                        <h3>Sistema Eléctrico Cardíaco (Nódulo Sinusal)</h3>
+                        <p>El corazón posee automatismo cardíaco; sus contracciones nacen en el propio órgano:</p>
+                        <ul>
+                            <li><strong>Nódulo Sinusal (NSA):</strong> Ubicado en la aurícula derecha, actúa como el marcapasos natural enviando el impulso eléctrico inicial (~80 impulsos/min).</li>
+                            <li><strong>Conducción:</strong> El estímulo viaja al Nódulo Auriculoventricular (NAV), baja por el Haz de His y se distribuye mediante las <strong>Fibras de Purkinje</strong>, contrayendo secuencialmente los ventrículos.</li>
+                        </ul>
+                    </div>
+                    <div class="image-side">
+                        <div class="glass-card-img">
+                            <img src="img/sistema-electrico.png" alt="Sistema Eléctrico del Corazón">
+                            <div class="image-glow-effect"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Ritmo y Presión Arterial -->
+                <div class="content-row">
+                    <div class="text-side">
+                        <h3>Ritmo Cardíaco, Ciclo y Presión Arterial</h3>
+                        <ul>
+                            <li><strong>Ciclo Cardíaco (0,8 seg):</strong> Compuesto por la <em>sístole</em> (contracción/eyección) y la <em>diástole</em> (relajación/llenado). Los ruidos cardíacos ("lub-dup") corresponden al cierre de las válvulas auriculoventriculares y sigmoideas.</li>
+                            <li><strong>Presión Arterial:</strong> Fuerza ejercida por la sangre sobre las arterias (valores nominales de referencia aproximados: $120/80\text{ mmHg}$).</li>
+                            <li><strong>Regulación:</strong> Modulada por el sistema nervioso autónomo (simpático acelera, parasimpático frena) y factores físicos como el ejercicio aeróbico.</li>
+                        </ul>
+                    </div>
+                    <div class="image-side">
+                        <div class="glass-card-img pulse-monitor-card">
+                            <div class="mock-accelerometer">
+                                <div class="pulse-line"></div>
+                                <div class="bpm-display"><span class="pulse-dot"></span> 78 BPM</div>
+                            </div>
+                            <span class="img-caption">Monitoreo de Ciclo Cardíaco</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: INTEGRANTES -->
+        <section id="integrantes" class="spa-section">
+            <div class="section-header">
+                <h2>Integrantes del Grupo</h2>
+                <p>Colegio Normal - 4°C Sociales</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card glass-panel">
+                    <div class="avatar-glow">👑</div>
+                    <h3>Genaro Gularte</h3>
+                    <p class="role-title">Creador de la WEB</p>
+                    <p class="member-desc">Desarrollo frontend, arquitectura SPA, animaciones GSAP y diseño Liquid Glass.</p>
+                </div>
+                <div class="team-card glass-panel">
+                    <div class="avatar-glow">🤝</div>
+                    <h3>Augusto Macagno</h3>
+                    <p class="role-title">Amigo mío</p>
+                    <p class="member-desc">Investigación teórica de biología, contenidos del PDF y exposición oral.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: FQS & DATOS CURIOSOS -->
+        <section id="fqs" class="spa-section">
+            <div class="section-header">
+                <h2>Preguntas Frecuentes y Datos Curiosos</h2>
+                <p>Hacé clic en cada pregunta para desplegar su respuesta.</p>
+            </div>
+
+            <div class="faq-container-split">
+                <!-- Columna 1: Preguntas Frecuentes (8 ítems) -->
+                <div class="faq-column">
+                    <h3 class="column-title">❓ Preguntas Frecuentes</h3>
+                    
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">1. ¿Cuántas veces late el corazón por día? <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>Late aproximadamente <strong>100.000 veces diarias</strong>, bombeando más de 7.000 litros de sangre a través de todo el cuerpo sin detenerse ni un solo segundo.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">2. ¿Por qué la sangre arterial es roja brillante y la venosa más oscura? <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>Se debe al nivel de saturación de oxígeno unido a la hemoglobina. La sangre oxigenada (arterial) refleja tonos rojos brillantes, mientras que la carboxigenada (venosa) adquiere un tono rojo oscuro o azulado.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">3. ¿Cuánto tarda la sangre en recorrer todo el circuito del cuerpo? <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>Aproximadamente <strong>60 segundos</strong> en condiciones de reposo en completar un circuito entero desde el corazón, pasando por los pulmones, los tejidos y retornando.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">4. ¿Qué ocurre con el ritmo cardíaco durante el ejercicio físico? <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>El sistema nervioso simpático eleva la frecuencia cardíaca para aumentar el gasto cardíaco y suplir la alta demanda de oxígeno y nutrientes que exigen los músculos en actividad.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">5. ¿Qué diferencia hay entre sístole y diástole? <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>La <strong>sístole</strong> es la fase de contracción muscular donde se expulsa la sangre hacia las arterias, y la <strong>diástole</strong> es la fase de relajación donde el corazón se expande y se llena de sangre.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">6. ¿Por qué el músculo cardíaco no se fatiga? <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>El miocardio posee una altísima concentración de mitocondrias y un suministro constante de sangre propia a través de las arterias coronarias, permitiéndole trabajar rítmicamente toda la vida.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">7. ¿Qué función cumple exactamente el Nódulo Sinusal? <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>Funciona como el <strong>marcapasos natural</strong> del corazón situado en la aurícula derecha, generando de forma espontánea los impulsos eléctricos que marcan el ritmo cardíaco.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">8. ¿Qué es exactamente la presión arterial 120/80 mmHg? <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>Representa la presión sistólica (cuando el corazón se contrae e impulsa con fuerza, 120) frente a la presión diastólica (cuando el corazón se relaja entre latidos, 80).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Datos Curiosos (8 ítems) -->
+                <div class="faq-column">
+                    <h3 class="column-title">💡 Datos Curiosos</h3>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">1. Extensión vascular kilométrica <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>Si desplegaras todos los vasos sanguíneos (arterias, venas y capilares) de un adulto en línea recta, alcanzarían una asombrosa longitud de más de <strong>100.000 kilómetros</strong> (¡más de dos vueltas a la Tierra!).</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">2. Potencia de bombeo hidráulico <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>El corazón humano genera tanta presión y fuerza mecánica que, simbólicamente, sería capaz de impulsar un chorro de sangre a una altura de hasta <strong>9 metros</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">3. Producción masiva celular <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>La médula ósea roja de nuestros huesos produce cerca de <strong>2 millones de glóbulos rojos nuevos por segundo</strong> para reemplazar de forma continua a los que cumplen su ciclo de 120 días.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">4. El mito de los latidos audibles <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>El sonido clásico "lub-dup" no es el músculo contrayéndose, sino el golpe seco y cierre mecánico de las válvulas cardíacas al frenar el retroceso de la sangre.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">5. Circulación cerrada y perfecta <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>En condiciones normales de salud, la sangre humana <strong>nunca sale de los vasos</strong> (sistema cerrado) y la sangre oxigenada jamás se mezcla con la carboxigenada (sistema completo).</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">6. El tamaño según la edad <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>El corazón de un reciéní nacido tiene el tamaño aproximado de una nuez, mientras que en un adulto equivale al puño cerrado de la persona.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">7. El rol de la linfa <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>El sistema linfático recupera aproximadamente el 10% del líquido extracelular que se filtra en los tejidos y lo devuelve limpio al torrente sanguíneo a la altura de los hombros.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item glass-panel">
+                        <button class="accordion-header">8. La velocidad en los capilares <span class="arrow">▼</span></button>
+                        <div class="accordion-content">
+                            <p>A pesar de que la sangre sale eyectada a gran velocidad del corazón, en los capilares microscópicos disminuye drásticamente a unos 0,5 mm/segundo para facilitar el intercambio de nutrientes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: ENFERMEDADES Y PREVENCIÓN -->
+        <section id="enfermedades" class="spa-section">
+            <div class="section-header">
+                <h2>Enfermedades Cardiovasculares y Prevención</h2>
+                <p>Patologías comunes, detección, prevención y advertencia médica profesional.</p>
+            </div>
+
+            <!-- Aviso Médico Destacado -->
+            <div class="medical-alert-banner glass-panel">
+                <span class="alert-icon">⚠️</span>
+                <div>
+                    <h4>Aviso Médico Profesional</h4>
+                    <p>Ante cualquier síntoma inusual, dolor en el pecho, mareos o palpitaciones, es fundamental <strong>acudir de inmediato a un médico especialista (cardiólogo)</strong>. Nunca te automediques ni ignores las señales de alerta.</p>
+                </div>
+            </div>
+
+            <div class="diseases-grid">
+                <!-- 1. Infarto -->
+                <div class="disease-card glass-panel">
+                    <h3>Infarto Agudo de Miocardio</h3>
+                    <p><strong>Descripción:</strong> Obstrucción severa de las arterias coronarias que interrumpe el flujo sanguíneo y provoca necrosis (muerte celular) en el tejido cardíaco.</p>
+                    <p><strong>Cómo detectarlo:</strong> Dolor opresivo intenso en el pecho ("como un peso gigante"), irradiación hacia el brazo izquierdo, cuello o mandíbula, sudoración fría y falta de aire.</p>
+                    <p><strong>Cómo prevenirlo:</strong> Evitar el sedentarismo, no fumar, mantener una dieta baja en grasas saturadas y controlar el estrés.</p>
+                </div>
+
+                <!-- 2. Hipertensión Arterial -->
+                <div class="disease-card glass-panel">
+                    <h3>Hipertensión Arterial ("Presión Alta")</h3>
+                    <p><strong>Descripción:</strong> Elevación persistente de la fuerza con la que la sangre empuja las paredes arteriales por encima de los valores normales (120/80).</p>
+                    <p><strong>Cómo detectarlo:</strong> A menudo es silenciosa ("la asesina silenciosa"), pero puede causar dolores de cabeza frontales, mareos o visión borrosa en crisis.</p>
+                    <p><strong>Cómo prevenirlo:</strong> Reducir el consumo de sal, realizar actividad física regular, mantener un peso saludable y evitar el exceso de alcohol.</p>
+                </div>
+
+                <!-- 3. Arritmias -->
+                <div class="disease-card glass-panel">
+                    <h3>Arritmias Cardíacas</h3>
+                    <p><strong>Descripción:</strong> Alteraciones o irregularidades en el ritmo eléctrico normal fijado por el nódulo sinusal (el corazón late muy rápido, muy lento o desincronizado).</p>
+                    <p><strong>Cómo detectarlo:</strong> Sensación de palpitaciones fuertes en el pecho, aleteo, mareos repentinos, desmayos o fatiga extrema.</p>
+                    <p><strong>Cómo prevenirlo:</strong> Evitar estimulantes en exceso (cafeína, bebidas energizantes), no consumir tabaco y realizarse chequeos cardiológicos periódicos.</p>
+                </div>
+
+                <!-- 4. Insuficiencia Cardíaca -->
+                <div class="disease-card glass-panel">
+                    <h3>Insuficiencia Cardíaca</h3>
+                    <p><strong>Descripción:</strong> Incapacidad crónica del corazón para bombear el volumen de sangre necesario para satisfacer las demandas metabólicas del organismo.</p>
+                    <p><strong>Cómo detectarlo:</strong> Fatiga crónica al caminar, hinchazón (edema) en piernas, tobillos y pies, y dificultad respiratoria al estar acostado.</p>
+                    <p><strong>Cómo prevenirlo:</strong> Controlar la presión arterial, tratar la diabetes, llevar una dieta cardiosaludable y evitar el consumo de sustancias nocivas.</p>
+                </div>
+
+                <!-- 5. Trombosis -->
+                <div class="disease-card glass-panel">
+                    <h3>Trombosis Vascular</h3>
+                    <p><strong>Descripción:</strong> Bloqueo u obstrucción de un vaso sanguíneo debido a un coágulo (trombo) formado por plaquetas sobre paredes arteriales dañadas o por inmovilidad prolongada.</p>
+                    <p><strong>Cómo detectarlo:</strong> Dolor punzante, inflamación, enrojecimiento y aumento de temperatura en la zona afectada (frecuentemente en extremidades).</p>
+                    <p><strong>Cómo prevenirlo:</strong> Evitar periodos largos de inmovilidad absoluta, mantenerse hidratado, caminar con frecuencia y usar medias de compresión si se viaja mucho.</p>
+                </div>
+
+                <!-- 6. Angina de Pecho -->
+                <div class="disease-card glass-panel">
+                    <h3>Angina de Pecho</h3>
+                    <p><strong>Descripción:</strong> Dolor torácico transitorio causado por una irrigación sanguínea insuficiente en el miocardio durante esfuerzos físicos intensos.</p>
+                    <p><strong>Cómo detectarlo:</strong> Opresión en el pecho que aparece al hacer ejercicio o ante estrés emocional fuerte y cede al descansar.</p>
+                    <p><strong>Cómo prevenirlo:</strong> Tratar la aterosclerosis a tiempo, controlar niveles de colesterol LDL y seguir pautas estrictas de vida sana.</p>
+                </div>
+
+                <!-- 7. Aterosclerosis -->
+                <div class="disease-card glass-panel">
+                    <h3>Aterosclerosis y Arterioesclerosis</h3>
+                    <p><strong>Descripción:</strong> Acumulación de placas de colesterol (ateromas) en el interior de las arterias, endureciéndolas y reduciendo su calibre interno.</p>
+                    <p><strong>Cómo detectarlo:</strong> Análisis de sangre para perfil lipídico (colesterol total, HDL, LDL) y estudios por imágenes como ecodoppler.</p>
+                    <p><strong>Cómo prevenirlo:</strong> Dieta rica en fibra y grasas saludables (omega-3), evitar comida chatarra ultraprocesada y hacer ejercicio aeróbico.</p>
+                </div>
+
+                <!-- 8. Anemia -->
+                <div class="disease-card glass-panel">
+                    <h3>Anemia</h3>
+                    <p><strong>Descripción:</strong> Trastorno de la sangre caracterizado por la disminución de glóbulos rojos o de hemoglobina, reduciendo el transporte de oxígeno.</p>
+                    <p><strong>Cómo detectarlo:</strong> Palidez cutánea, cansancio crónico, debilidad general, mareos frecuentes y uñas quebradizas.</p>
+                    <p><strong>Cómo prevenirlo:</strong> Consumir alimentos ricos en hierro (carnes rojas maguras, lentejas, espinacas) y vitamina C para mejorar su absorción.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: PERSONALIZAR -->
+        <section id="personalizar" class="spa-section">
+            <div class="section-header">
+                <h2>Panel de Personalización Liquid Glass</h2>
+                <p>Modificá en tiempo real los colores del entorno visual a tu gusto.</p>
+            </div>
+            
+            <div class="customizer-panel glass-panel">
+                <div class="customizer-group">
+                    <label for="primaryColorPicker">Color Base de Orbes / Acento:</label>
+                    <input type="color" id="primaryColorPicker" value="#8b0000">
+                </div>
+                <div class="customizer-group">
+                    <label for="accentGlowPicker">Color de Resplandor (Glow):</label>
+                    <input type="color" id="accentGlowPicker" value="#ff1e42">
+                </div>
+                <div class="customizer-group">
+                    <label for="textColorPicker">Color de Tipografías:</label>
+                    <input type="color" id="textColorPicker" value="#ffffff">
+                </div>
+                <button id="resetCustomizer" class="reset-btn">Restablecer Valores</button>
+            </div>
+        </section>
+
+        <!-- FOOTER ÉPICO -->
+        <footer class="epic-footer glass-panel">
+            <div class="footer-pulse-bar"></div>
+            <div class="footer-content-flex">
+                <div class="footer-heart">❤️</div>
+                <p class="footer-text">Gracias por leer estuve +50 horas con esta página</p>
+                <div class="footer-sub">Colegio Normal - 4°C Sociales | Genaro & Augusto</div>
+            </div>
+        </footer>
+
+    </main>
+</body>
+</html>

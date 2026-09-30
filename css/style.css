@@ -1,0 +1,833 @@
+/* ==========================================
+   VARIABLES Y CONFIGURACIÓN BASE
+   ========================================== */
+:root {
+    --bg-color: #070308;
+    --primary-color: #8b0000;
+    --accent-glow: #ff1e42;
+    --text-color: #ffffff;
+    --glass-bg: rgba(25, 10, 15, 0.45);
+    --glass-border: rgba(255, 60, 90, 0.25);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --blur-strength: blur(16px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    padding-bottom: 120px;
+}
+
+/* ==========================================
+   FONDO CON ORBES LIQUID GLASS ANIMADOS
+   ========================================== */
+.background-orbs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, #120509 0%, #050204 100%);
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: orbFloat 18s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    width: 450px;
+    height: 450px;
+    background: var(--primary-color);
+    top: -10%;
+    left: -10%;
+}
+
+.orb-2 {
+    width: 550px;
+    height: 550px;
+    background: #500014;
+    bottom: -15%;
+    right: -10%;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    background: var(--accent-glow);
+    top: 40%;
+    left: 60%;
+    opacity: 0.3;
+    animation-delay: -10s;
+}
+
+@keyframes orbFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(60px, 40px) scale(1.15); }
+    100% { transform: translate(-50px, 70px) scale(0.9); }
+}
+
+/* ==========================================
+   NAVEGACIÓN LÍQUIDA (LIQUID TAB BAR / PILL)
+   ========================================== */
+.liquid-nav-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 95%;
+    max-width: 800px;
+}
+
+.liquid-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-strength);
+    -webkit-backdrop-filter: var(--blur-strength);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 8px 12px;
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-indicator {
+    position: absolute;
+    height: calc(100% - 16px);
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-glow));
+    border-radius: 40px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.nav-icon {
+    font-size: 1.1rem;
+}
+
+.nav-btn .nav-text {
+    opacity: 0.8;
+}
+
+.nav-btn.active .nav-text {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================
+   CONTENEDOR SPA & SECCIONES
+   ========================================== */
+.main-container {
+    max-width: 1200px;
+    margin: 120px auto 40px auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.spa-section {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.spa-section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #fff, #ff8fa3);
+    background-clip: text; /* Propiedad estándar recomendada */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-header p {
+    color: #ffb3c1;
+    font-size: 1.1rem;
+}
+
+/* ==========================================
+   ESTILOS GENERALES DE PANELES GLASS
+   ========================================== */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-strength);
+    -webkit-backdrop-filter: var(--blur-strength);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow);
+    padding: 30px;
+}
+
+/* ==========================================
+   SECCIÓN 1: INICIO (HERO)
+   ========================================== */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 70vh;
+    gap: 40px;
+}
+
+.hero-text-wrapper {
+    flex: 1;
+}
+
+.glow-title {
+    font-size: 3.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.glow-title .char {
+    display: inline-block;
+    animation: randomGlow 4s infinite alternate ease-in-out;
+}
+
+.glow-title .char:nth-child(2n) { animation-delay: -1s; color: #ff4d6d; }
+.glow-title .char:nth-child(3n) { animation-delay: -2s; color: #ff758f; }
+.glow-title .char:nth-child(5n) { animation-delay: -3s; color: #c9184a; }
+
+@keyframes randomGlow {
+    0% { text-shadow: 0 0 5px #ff1e42, 0 0 10px #8b0000; transform: translateY(0); }
+    50% { text-shadow: 0 0 25px #ff4d6d, 0 0 35px #ff1e42; transform: translateY(-4px); }
+    100% { text-shadow: 0 0 10px #c9184a, 0 0 20px #500014; transform: translateY(0); }
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #ffb3c1;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(139, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    color: #ffccd5;
+}
+
+.hero-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-glow-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pulsing-heart {
+    width: 260px;
+    height: 260px;
+    object-fit: contain;
+    animation: doubleBeat 1.2s infinite ease-in-out;
+    filter: drop-shadow(0 0 25px var(--accent-glow));
+    z-index: 2;
+}
+
+.heart-pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--accent-glow);
+    animation: ringPulse 2s infinite ease-out;
+    opacity: 0;
+}
+
+@keyframes doubleBeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.12); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.08); }
+    60% { transform: scale(1); }
+}
+
+@keyframes ringPulse {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* ==========================================
+   SECCIÓN 2: TEORÍA (DISTRIBUCIÓN PERSONALIZADA)
+   ========================================== */
+.author-section-block {
+    margin-bottom: 60px;
+}
+
+.author-badge-pill {
+    display: inline-block;
+    background: linear-gradient(135deg, #8b0000, #500014);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 100, 120, 0.3);
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+}
+
+.augusto-badge {
+    background: linear-gradient(135deg, #a4161a, #660708);
+}
+
+.content-row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 40px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-strength);
+    -webkit-backdrop-filter: var(--blur-strength);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: var(--glass-shadow);
+}
+
+.content-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.text-side {
+    flex: 1.2;
+}
+
+.text-side h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ffccd5;
+}
+
+.text-side p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    margin-bottom: 15px;
+}
+
+.text-side ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.text-side li {
+    margin-bottom: 8px;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+.image-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glass-card-img {
+    position: relative;
+    width: 100%;
+    max-height: 320px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.glass-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.glass-card-img:hover img {
+    transform: scale(1.05);
+}
+
+.image-glow-effect {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 20px rgba(255, 30, 66, 0.3);
+    pointer-events: none;
+}
+
+.blood-cells-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.large-img {
+    height: 200px;
+}
+
+.img-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    padding: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ff8fa3;
+}
+
+/* Simulador de Acelerómetro / Ritmo Cardíaco */
+.pulse-monitor-card {
+    background: linear-gradient(135deg, rgba(30, 10, 15, 0.8), rgba(10, 3, 5, 0.9));
+    padding: 30px;
+    height: 220px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mock-accelerometer {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    border-bottom: 2px dashed rgba(255, 30, 66, 0.4);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.pulse-line {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background: repeating-linear-gradient(90deg, transparent, transparent 40px, var(--accent-glow) 40px, var(--accent-glow) 44px, transparent 44px, transparent 80px);
+    animation: pulseScroll 2s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes pulseScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.bpm-display {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff4d6d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pulse-dot {
+    width: 12px;
+    height: 12px;
+    background: #ff1e42;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff1e42;
+    animation: dotBlink 1s infinite alternate;
+}
+
+@keyframes dotBlink {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(1.3); opacity: 1; }
+}
+
+/* ==========================================
+   SECCIÓN 3: INTEGRANTES
+   ========================================== */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.team-card {
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(255, 30, 66, 0.25);
+}
+
+.avatar-glow {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+
+.team-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.role-title {
+    color: var(--accent-glow);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+}
+
+.member-desc {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   SECCIÓN 4: FQS & DATOS CURIOSOS (ACORDEÓN)
+   ========================================== */
+.faq-container-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.column-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ff8fa3;
+    text-align: center;
+}
+
+.accordion-item {
+    margin-bottom: 15px;
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 18px 20px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: rgba(255, 30, 66, 0.1);
+}
+
+.accordion-header .arrow {
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+    color: var(--accent-glow);
+}
+
+.accordion-item.active .accordion-header .arrow {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    padding: 0 20px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.accordion-content p {
+    padding: 15px 0;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 300px;
+    transition: max-height 0.4s ease-in-out;
+}
+
+/* ==========================================
+   SECCIÓN 5: ENFERMEDADES
+   ========================================== */
+.medical-alert-banner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.4), rgba(50, 0, 10, 0.6));
+    border: 1px solid rgba(255, 30, 66, 0.4);
+    margin-bottom: 30px;
+}
+
+.alert-icon {
+    font-size: 2.5rem;
+}
+
+.medical-alert-banner h4 {
+    color: #ff4d6d;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.medical-alert-banner p {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.diseases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.disease-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.disease-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 30, 66, 0.2);
+}
+
+.disease-card h3 {
+    color: #ffccd5;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.disease-card p {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.disease-card strong {
+    color: #ff8fa3;
+}
+
+/* ==========================================
+   SECCIÓN 6: PERSONALIZADOR
+   ========================================== */
+.customizer-panel {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.customizer-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customizer-group label {
+    font-weight: 600;
+    color: #ffccd5;
+}
+
+.customizer-group input[type="color"] {
+    appearance: none;
+    border: none;
+    width: 50px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-glow));
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.reset-btn:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================
+   FOOTER ÉPICO CON EFECTO LIQUID GLASS
+   ========================================== */
+.epic-footer {
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(180deg, rgba(25, 10, 15, 0.4), rgba(5, 2, 4, 0.8));
+    border: 1px solid var(--glass-border);
+    border-radius: 20px 20px 0 0;
+}
+
+.footer-pulse-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+    animation: barGlow 3s infinite ease-in-out;
+}
+
+@keyframes barGlow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; box-shadow: 0 0 15px var(--accent-glow); }
+}
+
+.footer-content-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-heart {
+    font-size: 2rem;
+    animation: doubleBeat 1.2s infinite ease-in-out;
+}
+
+.footer-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff, #ff8fa3);
+    background-clip: text; /* Propiedad estándar recomendada */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-sub {
+    font-size: 0.9rem;
+    color: #ffb3c1;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN (MÓVILES Y ESCRITORIO)
+   ========================================== */
+@media (max-width: 900px) {
+    .hero-content, .content-row, .content-row.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .glow-title {
+        font-size: 2.8rem;
+        justify-content: center;
+    }
+
+    .faq-container-split {
+        grid-template-columns: 1fr;
+    }
+
+    .text-side ul {
+        display: inline-block;
+        text-align: left;
+    }
+
+    .liquid-nav-container {
+        top: auto;
+        bottom: 15px;
+        width: 92%;
+    }
+
+    .liquid-nav {
+        padding: 6px;
+    }
+
+    .nav-btn {
+        padding: 8px 12px;
+    }
+
+    .nav-text {
+        display: none; /* En móvil muy chico se queda solo el ícono o texto resumido */
+    }
+
+    body {
+        padding-bottom: 90px;
+    }
+}
+
+.circulacion-img {
+    object-fit: contain !important;
+    transform: scale(0.50);
+}
